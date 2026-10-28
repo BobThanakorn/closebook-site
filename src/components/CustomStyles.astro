@@ -1,0 +1,47 @@
+---
+// Closebook palette (same as the demo): cream background, ink text, teal
+// primary, rust accent. Font family comes from Astro's Fonts API
+// (`fonts` in astro.config.ts) as `--font-plex-thai`.
+// The site is light-only (ui.theme in src/config.yaml), so there is no .dark block.
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: var(--font-plex-thai);
+    --aw-font-serif: var(--font-plex-thai);
+    --aw-font-heading: var(--font-plex-thai);
+
+    --aw-color-primary: rgb(47 125 140); /* teal #2F7D8C */
+    --aw-color-secondary: rgb(31 90 102); /* darker teal #1F5A66 */
+    --aw-color-accent: rgb(181 68 28); /* rust #B5441C */
+
+    --aw-color-text-heading: rgb(19 38 43); /* ink #13262B */
+    --aw-color-text-default: rgb(19 38 43);
+    --aw-color-text-muted: rgb(82 100 106); /* #52646A */
+    --aw-color-bg-page: rgb(247 245 240); /* cream #F7F5F0 */
+
+    --aw-color-bg-page-dark: rgb(247 245 240);
+
+    ::selection {
+      background-color: rgb(221 237 240);
+    }
+  }
+
+  /* Thai needs room for stacked vowels and tone marks. The template's headings use tight
+     English-oriented leading and tracking, which makes tone marks collide with the line above. */
+  .font-heading,
+  h1,
+  h2,
+  h3 {
+    line-height: 1.4 !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Tap targets: footer list links and the logo links (header and footer) are at least 44px tall. */
+  footer ul a,
+  a[href='/'] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

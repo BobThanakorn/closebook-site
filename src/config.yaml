@@ -1,0 +1,34 @@
+site:
+  name: Closebook
+  site: 'https://example.com' # TODO: replace with the real domain before publishing
+  base: '/'
+  trailingSlash: false
+
+# Default SEO metadata
+metadata:
+  title:
+    default: Closebook
+    template: '%s — Closebook'
+  description: 'ต้นแบบ Closebook: จับคู่ยอดโอนจาก Shopee, Lazada และ TikTok Shop กับรายการขายและบัญชีธนาคาร แล้วส่งเฉพาะรายการผิดปกติให้เจ้าของร้านอนุมัติ (ข้อมูลสังเคราะห์)'
+  robots:
+    index: false # prototype: keep out of search engines until there is something real to index
+    follow: false
+  openGraph:
+    site_name: Closebook
+    type: website
+
+i18n:
+  language: th
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'light:only' # the cream palette is the brand; no dark mode

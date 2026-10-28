@@ -1,0 +1,223 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Content from '~/components/widgets/Content.astro';
+import Timeline from '~/components/widgets/Timeline.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import { headerData } from '~/navigation';
+
+const metadata = {
+  title: 'ปิดบัญชีสิ้นเดือนให้ร้านออนไลน์',
+  ignoreTitleTemplate: false,
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement" />
+  <Fragment slot="header">
+    <Header {...headerData} isSticky />
+  </Fragment>
+
+  <!-- Hero ******************* -->
+  <Hero
+    badge="ต้นแบบ · ข้อมูลสังเคราะห์"
+    tagline="สำหรับร้านค้าบน Shopee · Lazada · TikTok Shop"
+    actions={[
+      { variant: 'primary', text: 'ดูเดโม', href: '/demo/' },
+      { text: 'ทำงานอย่างไร', href: '#how' },
+    ]}
+    image={`<img src="/closebook-demo-phone.png" alt="ภาพหน้าจอเดโม Closebook แสดงความคืบหน้าการปิดงวดและตัวเลขสรุป" width="480" height="1260" class="mx-auto h-auto max-h-[40rem] w-auto" loading="eager" fetchpriority="high" />`}
+  >
+    <Fragment slot="title">
+      ปิดบัญชีสิ้นเดือน<br />
+      <span class="text-accent">เหลือแค่แตะอนุมัติ</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      Closebook จับคู่ยอดโอนจากมาร์เก็ตเพลสกับรายการขายและบัญชีธนาคารให้ แล้วส่ง<strong>เฉพาะรายการผิดปกติ</strong>มาให้คุณตัดสินใจ
+      ที่เหลือไม่ต้องมีใครแตะ
+    </Fragment>
+  </Hero>
+
+  <!-- How it works ******************* -->
+  <Steps
+    id="how"
+    tagline="ทำงานอย่างไร"
+    title="สี่ขั้นตอน คนทำแค่ขั้นที่สาม"
+    items={[
+      {
+        title: '1. รวบรวมข้อมูล',
+        description: 'รายการชำระเงิน ยอดโอนของแต่ละรอบ และรายการเงินเข้าบัญชีธนาคาร (ในเดโมนี้เป็นข้อมูลสังเคราะห์)',
+        icon: 'tabler:file-import',
+      },
+      {
+        title: '2. จับคู่ด้วยโค้ด',
+        description: 'โค้ดที่กำหนดกฎตายตัวเทียบยอดทีละรอบ ตัวเลขทุกตัวคำนวณด้วยโปรแกรม ไม่ใช่ AI เดา',
+        icon: 'tabler:scale',
+      },
+      {
+        title: '3. ตัดสินใจเฉพาะที่ผิดปกติ',
+        description: 'รายการที่ไม่ตรงถูกส่งเป็นการ์ดพร้อมหลักฐาน มีปุ่มให้กดเลือกวิธีจัดการ',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: '4. นักบัญชีอนุมัติ',
+        description: 'สิ่งที่คุณเลือกเป็นเพียงข้อเสนอ นักบัญชียังเป็นผู้ตรวจและอนุมัติขั้นสุดท้าย',
+        icon: 'tabler:user-check',
+      },
+    ]}
+  />
+
+  <!-- Exceptions ******************* -->
+  <Features
+    id="exceptions"
+    tagline="รายการที่จับได้"
+    title="ห้าแบบที่เดโมตรวจและแยกให้"
+    subtitle="กฎถูกทดสอบกับข้อมูลสังเคราะห์ที่ใส่ความผิดปกติไว้ล่วงหน้า"
+    columns={3}
+    items={[
+      {
+        title: 'ยอดโอนขาด',
+        description: 'แพลตฟอร์มโอนน้อยกว่ายอดที่ควรได้จากรายการชำระเงิน ระบบบอกจำนวนที่ขาดพอดี',
+        icon: 'tabler:arrow-down',
+      },
+      {
+        title: 'ค่าธรรมเนียมถูกหักซ้ำ',
+        description: 'ค่าธรรมเนียมชนิดเดียวกันถูกหักสองครั้งในออเดอร์เดียว ระบบบอกจำนวนเงินและจำนวนออเดอร์ที่ซ้ำ',
+        icon: 'tabler:copy',
+      },
+      {
+        title: 'ไม่พบเงินเข้าบัญชี',
+        description: 'ยอดโอนถูกต้อง แต่ไม่พบเครดิตตรงกันในบัญชีธนาคารภายในกรอบเวลา',
+        icon: 'tabler:ban',
+      },
+      {
+        title: 'ยังไม่หักเงินคืนลูกค้า',
+        description: 'โอนเกินมาเท่ากับยอดคืนเงินลูกค้าในรอบนั้นพอดี มักถูกหักคืนในรอบถัดไป',
+        icon: 'tabler:arrow-back-up',
+      },
+      {
+        title: 'ปัดเศษ ไม่ถือว่าผิด',
+        description: 'ส่วนต่างต่ำกว่า 1 บาทถือว่าตรงกัน ไม่ส่งการ์ดมากวนใจ',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'ไม่รู้สาเหตุ ก็ไม่เดา',
+        description: 'ถ้าโอนเกินโดยไม่ตรงกับเงินคืน ระบบติดป้ายว่า "ไม่ทราบสาเหตุ" แล้วส่งให้คนตรวจ',
+        icon: 'tabler:help',
+      },
+    ]}
+  />
+
+  <!-- Demo numbers ******************* -->
+  <Stats
+    tagline="ผลจากเดโม"
+    title="ทดสอบกับเฉลยที่เราเขียนไว้เอง"
+    subtitle="ข้อมูลสังเคราะห์ 160 ออเดอร์ ผลนี้ทดสอบตรรกะของกฎ ไม่ใช่ความแม่นยำกับร้านค้าจริง"
+    stats={[
+      { title: 'รอบโอนที่ตรวจ', amount: '33', icon: 'tabler:calendar-stats' },
+      { title: 'จับคู่เองไม่ต้องมีคนแตะ', amount: '25', icon: 'tabler:checks' },
+      { title: 'จับความผิดปกติได้', amount: '8 / 8', icon: 'tabler:target' },
+      { title: 'ปล่อยผ่านผิดพลาด', amount: '0', icon: 'tabler:shield-check' },
+    ]}
+  />
+
+  <!-- Deterministic ******************* -->
+  <Content
+    tagline="ทำไมไม่ให้ AI คำนวณ"
+    title="ตัวเลขทุกตัวตรวจย้อนได้"
+    items={[
+      {
+        title: 'กฎตายตัว ผลซ้ำได้',
+        description:
+          'ข้อมูลชุดเดิมให้ผลเดิมทุกครั้ง เรามีชุดเฉลยและชุดทดสอบอัตโนมัติ ถ้ามีรายการผิดปกติหลุดไปจะรู้ทันที',
+      },
+      {
+        title: 'AI ช่วยได้แค่ถ้อยคำ',
+        description:
+          'ในอนาคตอาจให้ AI เรียบเรียงคำอธิบายภาษาไทยให้เป็นกันเองขึ้น แต่ตัวเลขทุกตัวยังมาจากโค้ด และจะมีการตรวจว่าข้อความที่ปรับแล้วตัวเลขไม่เปลี่ยน',
+      },
+    ]}
+  />
+
+  <!-- Status ******************* -->
+  <Timeline
+    id="status"
+    tagline="สถานะตอนนี้"
+    title="อะไรทำแล้ว อะไรยังไม่ได้ทำ"
+    subtitle="เราไม่ขอให้คุณเชื่อสิ่งที่ยังไม่มี"
+    items={[
+      {
+        date: 'ทำแล้ว',
+        title: 'เดโมจับคู่ยอดและการ์ดอนุมัติ',
+        description: 'ข้อมูลสังเคราะห์ ตัวจับคู่แบบกฎตายตัว ชุดทดสอบ และหน้าเดโมที่กดใช้งานได้',
+        icon: 'tabler:check',
+        highlight: true,
+      },
+      {
+        date: 'ยังไม่ได้ทำ',
+        title: 'เชื่อมต่อ API ของมาร์เก็ตเพลส',
+        description: 'ดึงรายการชำระเงินและยอดโอนจริงจาก Shopee, Lazada และ TikTok Shop',
+        icon: 'tabler:plug-connected',
+        ghost: true,
+      },
+      {
+        date: 'ยังไม่ได้ทำ',
+        title: 'ส่งการ์ดผ่าน LINE Official Account',
+        description: 'ตอบกลับเป็นการ์ดเมื่อเจ้าของร้านทักมา',
+        icon: 'tabler:brand-line',
+        ghost: true,
+      },
+      {
+        date: 'ยังไม่ได้ทำ',
+        title: 'ส่งออกลงโปรแกรมบัญชี และใบสรุป ภ.พ.30',
+        description: 'ส่งออกรายการที่อนุมัติแล้ว และจัดเตรียมกระดาษทำการภาษีมูลค่าเพิ่มให้นักบัญชีตรวจ',
+        icon: 'tabler:file-export',
+        ghost: true,
+      },
+    ]}
+  />
+
+  <!-- FAQ ******************* -->
+  <FAQs
+    id="faq"
+    tagline="คำถามที่พบบ่อย"
+    title="ถามตรง ตอบตรง"
+    columns={1}
+    items={[
+      {
+        title: 'ใช้กับร้านจริงได้แล้วหรือยัง',
+        description: 'ยังไม่ได้ ตอนนี้เป็นต้นแบบที่ใช้ข้อมูลสังเคราะห์ ยังไม่เชื่อมต่อมาร์เก็ตเพลส LINE ธนาคาร หรือโปรแกรมบัญชีใด ๆ',
+      },
+      {
+        title: 'AI คำนวณตัวเลขหรือเปล่า',
+        description: 'ไม่ ตัวเลขทุกตัวมาจากโค้ดที่มีกฎตายตัว ไม่มี AI คำนวณหรือปรับตัวเลข',
+      },
+      {
+        title: 'ตัวเลขในเดโมแม่นยำแค่ไหน',
+        description: 'ได้ครบทุกข้อในชุดเฉลยที่เราเขียนไว้เอง ซึ่งช่วยยืนยันว่ากฎทำงานตามที่ตั้งใจ แต่ไม่ได้บอกว่าจะแม่นแค่ไหนกับข้อมูลร้านจริง ซึ่งมีรูปแบบและกรณีพิเศษมากกว่านี้',
+      },
+      {
+        title: 'อัตราค่าธรรมเนียมในเดโมคือของจริงไหม',
+        description: 'ไม่ใช่ เป็นอัตราสมมติเพื่อสร้างข้อมูล ไม่ใช่อัตราจริงของแพลตฟอร์มใด',
+      },
+      {
+        title: 'ราคาเท่าไหร่',
+        description: 'ยังไม่ได้กำหนด จึงยังไม่แสดงราคา',
+      },
+    ]}
+  />
+
+  <!-- CTA ******************* -->
+  <CallToAction
+    title="ลองกดการ์ดเอง"
+    subtitle="เดโมเปิดได้จากเบราว์เซอร์ ไม่ต้องติดตั้งหรือสมัคร"
+    actions={[{ variant: 'primary', text: 'เปิดเดโม', href: '/demo/' }]}
+  />
+</Layout>
